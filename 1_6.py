@@ -1,9 +1,9 @@
-import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+import pytest
 
 
-class TestAbs(unittest.TestCase):
+class TestAbs:
     def conn_brow(self):
         self.browser = webdriver.Chrome()
 
@@ -36,8 +36,7 @@ class TestAbs(unittest.TestCase):
             link = 'http://suninjuly.github.io/registration1.html'
             welcome_text = self.fill_forms(link)
 
-            self.assertEqual("Congratulations! You have successfully registered!", welcome_text,
-                             "Should be equal text")
+            assert "Congratulations! You have successfully registered!" == welcome_text, "Should be equal text"
 
         finally:
             self.browser.quit()
@@ -47,12 +46,11 @@ class TestAbs(unittest.TestCase):
             link = 'http://suninjuly.github.io/registration2.html'
             welcome_text = self.fill_forms(link)
 
-            self.assertEqual("Congratulations! You have successfully registered!", welcome_text,
-                             "Should be equal text")
+            assert "Congratulations! You have successfully registered!" == welcome_text, "Should be equal text"
 
         finally:
             self.browser.quit()
 
 
 if __name__ == "__main__":
-    unittest.main()
+    pytest.main()
